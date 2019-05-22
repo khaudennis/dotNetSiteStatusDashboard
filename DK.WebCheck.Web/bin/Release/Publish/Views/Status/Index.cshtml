@@ -1,0 +1,86 @@
+﻿@model IEnumerable<DK.WebCheck.Common.SiteInfo>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="refresh" content="@System.Configuration.ConfigurationManager.AppSettings["DashRefreshInSeconds"]">
+    <title>LCS Dashboard</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .statusBlock
+        {
+            float: left;
+            width: 10px;
+            height: 10px;
+            margin: 5px 5px 5px 5px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgba(0,0,0,.2);
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th style="width: 25%;" align="left">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th style="width: 40%;" align="left">
+                @Html.DisplayNameFor(model => model.HttpStatus)
+            </th>
+            <th style="width: 35%;">
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Html.DisplayFor(modelItem => item.Url)" target="_blank">@Html.DisplayFor(modelItem => item.Name)</a>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </span>
+                </td>
+                <td>
+                    @{
+            string statusColor = null;
+            int responseOptimal = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["ResponseTimeOptimal"]); //1000 ms
+            int responseOkay = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["ResponseTimeOkay"]); //1001-2500 ms
+            int responsePoor = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["ResponseTimePoor"]); //2500+ ms
+
+            if (item.ResponseTime == null)
+            {
+                statusColor = "#e00";
+            }
+            else if (Convert.ToInt32(item.ResponseTime) < responseOptimal)
+            {
+                statusColor = "#ad0";
+            }
+            else if ((Convert.ToInt32(item.ResponseTime) > responseOkay) && (Convert.ToInt32(item.ResponseTime) < responsePoor))
+            {
+                statusColor = "#fcd116";
+            }
+            else
+            {
+                statusColor = "#e00";
+            }                        
+                    }
+                    <div class="statusBlock" style="background-color:@statusColor;">
+                    </div>@Html.DisplayFor(modelItem => item.HttpStatus)
+                    <br />
+                    Response Time:
+                    @(item.ResponseTime == null ? "n/a" : item.ResponseTime + " ms")
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    </table>
+    <p>
+        This page is automatically updated every @System.Configuration.ConfigurationManager.AppSettings["DashRefreshInSeconds"]
+        seconds. Last Updated: @DateTime.Now.ToString()</p>
+</body>
+</html>

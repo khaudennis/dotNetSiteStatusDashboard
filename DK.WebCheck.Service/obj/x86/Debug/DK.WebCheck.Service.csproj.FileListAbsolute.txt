@@ -1,0 +1,9 @@
+C:\Users\dkhau\Desktop\DK.WebCheck\DK.WebCheck.Service\bin\Debug\DK.WebCheck.Service.exe
+C:\Users\dkhau\Desktop\DK.WebCheck\DK.WebCheck.Service\bin\Debug\DK.WebCheck.Service.pdb
+C:\Users\dkhau\Desktop\DK.WebCheck\DK.WebCheck.Service\bin\Debug\DK.WebCheck.Common.dll
+C:\Users\dkhau\Desktop\DK.WebCheck\DK.WebCheck.Service\bin\Debug\DK.WebCheck.Common.pdb
+C:\Users\dkhau\Desktop\DK.WebCheck\DK.WebCheck.Service\obj\x86\Debug\DK.WebCheck.Service.csprojAssemblyReference.cache
+C:\Users\dkhau\Desktop\DK.WebCheck\DK.WebCheck.Service\obj\x86\Debug\DK.WebCheck.Service.csproj.CoreCompileInputs.cache
+C:\Users\dkhau\Desktop\DK.WebCheck\DK.WebCheck.Service\obj\x86\Debug\DK.WebCheck.Service.csproj.CopyComplete
+C:\Users\dkhau\Desktop\DK.WebCheck\DK.WebCheck.Service\obj\x86\Debug\DK.WebCheck.Service.exe
+C:\Users\dkhau\Desktop\DK.WebCheck\DK.WebCheck.Service\obj\x86\Debug\DK.WebCheck.Service.pdb
